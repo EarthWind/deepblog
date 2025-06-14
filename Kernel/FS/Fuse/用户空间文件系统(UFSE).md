@@ -23,7 +23,7 @@ Linux内核从2.6.14开始支持用户空间文件系统，即FUSE(Filesystem in
 - 用户空间库(libfuse.\*)：负责和内核模块进行通信，接收来自内核模块的请求并将结果写回内核模块。
 - 挂载工具(fusermount):实现普通用户对文件系统挂载和卸载。
 
-![99b2d6b3154d01ed4e3dfff170844fe3.png](evernotecid://F69FFB73-5A4B-441D-90A3-E7FF421602A3/appyinxiangcom/31284421/ENResource/p2)
+![99b2d6b3154d01ed4e3dfff170844fe3.png](./Images/99b2d6b3154d01ed4e3dfff170844fe3.png)
 
 如上图所示，当应用程序在挂载点进行操作的时，IO路径分为以下几步：
 - 应用程序在挂载点进行系统调用；
@@ -121,11 +121,11 @@ max_user_bgreq  max_user_congthresh
 - 调用sget获取或分配文件系统超级块；
 - 调用`fuse_fill_super`初始化文件系统并填充超级块字段；
 
-![5d70998accaec057d76c51509afb3c69.png](evernotecid://F69FFB73-5A4B-441D-90A3-E7FF421602A3/appyinxiangcom/31284421/ENResource/p3)
+![5d70998accaec057d76c51509afb3c69.png](./Images/5d70998accaec057d76c51509afb3c69.png)
 
 如上图所示，默认会初始化一个根节点索引号为1的文件系统，用户空间文件系统在实现的时候需要进行默认维护，所有文件系统跟节点下的操作的父节点索引号都是1。另外，每当挂载一个文件系统，都会在内核模块中创建一个与之对应的fuse通道，fuse通道会被添加FUSE控制文件系统fusectl中；挂载多个文件系统时，多个fuse通道会被组织成一个链表，如下是一个fuse通道的内部结构：
 
-![87c6841cb91ee29b4f1d30346d54f9c9.png](evernotecid://F69FFB73-5A4B-441D-90A3-E7FF421602A3/appyinxiangcom/31284421/ENResource/p6)
+![87c6841cb91ee29b4f1d30346d54f9c9.png](./Images/87c6841cb91ee29b4f1d30346d54f9c9.png)
 
 fuse通道主要用于维护文件系统中各种类型的请求队列：
 - pending queue：一般的请求在初始化完成后会加入该队列，等待用户空间进程来读取；
@@ -162,7 +162,7 @@ total 0
 ##### 3.6 fuse请求
 如下是一个fuse请求的主要结构：
 
-![9af46589b0a142d0187c510bb64fc04c.png](evernotecid://F69FFB73-5A4B-441D-90A3-E7FF421602A3/appyinxiangcom/31284421/ENResource/p5)
+![9af46589b0a142d0187c510bb64fc04c.png](./Images/9af46589b0a142d0187c510bb64fc04c.png)
 
 主要包括了两个部分，发送给用户空间进程的部分fuse_in，用户空间进程返回的部分fuse_out；每个部分都携带了请求头部和请求的参数；
 ```C
@@ -186,7 +186,7 @@ struct fuse_out_header {
 
 fuse请求从创建到处理完成的过程中，会存在不同的状态：
 
-![6189226c5e2e9ecb59558a256ad12138.png](evernotecid://F69FFB73-5A4B-441D-90A3-E7FF421602A3/appyinxiangcom/31284421/ENResource/p7)
+![6189226c5e2e9ecb59558a256ad12138.png](./Images/6189226c5e2e9ecb59558a256ad12138.png)
 
 - FUSE_REQ_INIT：请求创建后正在进行初始化；
 - FUSE_REQ_PENDING：请求初始化完成并加入了pending queue中，等待用户空间进程读取；

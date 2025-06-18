@@ -1,0 +1,5 @@
+name: exmaple
+environment:
+  sdk: "^3.4.0"
+dependencies:
+  http: ^1.4.0

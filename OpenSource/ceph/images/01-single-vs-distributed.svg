@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">单机存储思维与分布式存储思维对比图</title>
+  <desc id="desc">左侧展示单机存储的典型假设，右侧展示 Ceph 对应的分布式存储关注点，中间箭头表示思维切换。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .left-head { fill: #dbeafe; stroke: #60a5fa; stroke-width: 2; }
+      .right-head { fill: #dcfce7; stroke: #4ade80; stroke-width: 2; }
+      .chip-left { fill: #eff6ff; stroke: #93c5fd; stroke-width: 1.5; }
+      .chip-right { fill: #f0fdf4; stroke: #86efac; stroke-width: 1.5; }
+      .summary { fill: #fff7ed; stroke: #fb923c; stroke-width: 2; }
+      .arrow { stroke: #64748b; stroke-width: 4; fill: none; marker-end: url(#arrowhead); }
+      .node { fill: #ffffff; stroke: #64748b; stroke-width: 1.5; }
+      .disk { fill: #fde68a; stroke: #f59e0b; stroke-width: 1.5; }
+      .text-dark { fill: #0f172a; font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .text-muted { fill: #334155; font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .title { font-size: 32px; font-weight: 700; }
+      .panel-title { font-size: 24px; font-weight: 700; }
+      .chip-title { font-size: 20px; font-weight: 700; }
+      .body { font-size: 18px; }
+      .small { font-size: 16px; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="720"/>
+  <text class="text-dark title" x="600" y="54" text-anchor="middle">从单机文件系统思维切换到分布式存储思维</text>
+
+  <rect class="panel" x="60" y="90" rx="22" ry="22" width="470" height="500"/>
+  <rect class="left-head" x="90" y="120" rx="14" ry="14" width="410" height="72"/>
+  <text class="text-dark panel-title" x="295" y="165" text-anchor="middle">单机存储思维</text>
+
+  <rect class="chip-left" x="95" y="220" rx="16" ry="16" width="400" height="66"/>
+  <text class="text-dark chip-title" x="120" y="247">本地设备</text>
+  <text class="text-muted body" x="120" y="272">看到的是一块盘、一台机器、一个操作系统内核</text>
+
+  <rect class="chip-left" x="95" y="300" rx="16" ry="16" width="400" height="66"/>
+  <text class="text-dark chip-title" x="120" y="327">统一管理</text>
+  <text class="text-muted body" x="120" y="352">元数据、数据、缓存、恢复基本都由同一台主机负责</text>
+
+  <rect class="chip-left" x="95" y="380" rx="16" ry="16" width="400" height="66"/>
+  <text class="text-dark chip-title" x="120" y="407">局部故障域</text>
+  <text class="text-muted body" x="120" y="432">主要考虑单盘、单机、单电源失效</text>
+
+  <rect class="chip-left" x="95" y="460" rx="16" ry="16" width="400" height="90"/>
+  <text class="text-dark chip-title" x="120" y="488">核心问题</text>
+  <text class="text-muted body" x="120" y="513">如何把一台机器上的存储空间组织好</text>
+  <text class="text-muted small" x="120" y="538">关键词：inode、目录树、页缓存、本地 IO</text>
+
+  <rect class="panel" x="670" y="90" rx="22" ry="22" width="470" height="500"/>
+  <rect class="right-head" x="700" y="120" rx="14" ry="14" width="410" height="72"/>
+  <text class="text-dark panel-title" x="905" y="165" text-anchor="middle">分布式存储思维</text>
+
+  <rect class="chip-right" x="705" y="220" rx="16" ry="16" width="400" height="66"/>
+  <text class="text-dark chip-title" x="730" y="247">集群资源</text>
+  <text class="text-muted body" x="730" y="272">面对的是一组节点，而不是一块本地磁盘</text>
+
+  <rect class="chip-right" x="705" y="300" rx="16" ry="16" width="400" height="66"/>
+  <text class="text-dark chip-title" x="730" y="327">数据放置</text>
+  <text class="text-muted body" x="730" y="352">决定数据落到哪些机器、复制几份、如何重映射</text>
+
+  <rect class="chip-right" x="705" y="380" rx="16" ry="16" width="400" height="66"/>
+  <text class="text-dark chip-title" x="730" y="407">持续恢复</text>
+  <text class="text-muted body" x="730" y="432">节点故障、扩容、回填、均衡都要自动处理</text>
+
+  <rect class="chip-right" x="705" y="460" rx="16" ry="16" width="400" height="90"/>
+  <text class="text-dark chip-title" x="730" y="488">核心问题</text>
+  <text class="text-muted body" x="730" y="513">如何把一组机器组织成统一、可扩展、可容错的存储系统</text>
+  <text class="text-muted small" x="730" y="538">关键词：对象、放置策略、一致性、恢复、再均衡</text>
+
+  <line class="arrow" x1="530" y1="340" x2="650" y2="340"/>
+  <text class="text-muted panel-title" x="590" y="315" text-anchor="middle">思维切换</text>
+
+  <rect class="node" x="170" y="610" rx="10" ry="10" width="170" height="48"/>
+  <text class="text-dark body" x="255" y="641" text-anchor="middle">应用 + 文件系统 + 磁盘</text>
+  <ellipse class="disk" cx="385" cy="634" rx="42" ry="18"/>
+  <rect class="disk" x="343" y="616" width="84" height="18"/>
+  <text class="text-dark small" x="385" y="639" text-anchor="middle">本地盘</text>
+
+  <rect class="node" x="760" y="610" rx="10" ry="10" width="92" height="48"/>
+  <text class="text-dark body" x="806" y="641" text-anchor="middle">OSD 1</text>
+  <rect class="node" x="874" y="610" rx="10" ry="10" width="92" height="48"/>
+  <text class="text-dark body" x="920" y="641" text-anchor="middle">OSD 2</text>
+  <rect class="node" x="988" y="610" rx="10" ry="10" width="92" height="48"/>
+  <text class="text-dark body" x="1034" y="641" text-anchor="middle">OSD 3</text>
+  <text class="text-muted small" x="920" y="688" text-anchor="middle">对象分布在多节点中，由集群规则共同管理</text>
+
+  <rect class="summary" x="270" y="610" rx="18" ry="18" width="660" height="84"/>
+  <text class="text-dark chip-title" x="600" y="642" text-anchor="middle">Ceph 关心的不是“这份数据写到哪个扇区”</text>
+  <text class="text-muted body" x="600" y="672" text-anchor="middle">而是“这份数据应该落到哪些节点、如何复制、如何恢复、如何扩容后继续稳定可用”</text>
+</svg>

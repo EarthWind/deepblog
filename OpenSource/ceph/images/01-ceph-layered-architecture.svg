@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="860" viewBox="0 0 1280 860" role="img" aria-labelledby="title desc">
+  <title id="title">Ceph 分层体系结构图</title>
+  <desc id="desc">展示应用通过 RGW、CephFS、RBD、librados 访问 Ceph，底层统一收敛到 RADOS，再由 MON、OSD 集群和 CRUSH 共同支撑。</desc>
+  <defs>
+    <style>
+      .bg { fill: #f8fafc; }
+      .card { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .top { fill: #e0f2fe; stroke: #38bdf8; stroke-width: 2; }
+      .iface { fill: #ffffff; stroke-width: 2; }
+      .rgw { fill: #fff7ed; stroke: #fb923c; }
+      .cephfs { fill: #eef2ff; stroke: #818cf8; }
+      .rbd { fill: #ecfccb; stroke: #84cc16; }
+      .librados { fill: #f5f3ff; stroke: #a78bfa; }
+      .rados { fill: #dbeafe; stroke: #3b82f6; stroke-width: 3; }
+      .bottom { fill: #f8fafc; stroke-width: 2; }
+      .mon { fill: #fee2e2; stroke: #ef4444; }
+      .osd { fill: #dcfce7; stroke: #22c55e; }
+      .crush { fill: #fef3c7; stroke: #f59e0b; }
+      .mgr { fill: #ede9fe; stroke: #8b5cf6; }
+      .takeaway { fill: #ffffff; stroke: #94a3b8; stroke-width: 2; }
+      .solid { stroke: #64748b; stroke-width: 3; fill: none; marker-end: url(#arrowhead); }
+      .dashed { stroke: #94a3b8; stroke-width: 2.5; stroke-dasharray: 8 8; fill: none; marker-end: url(#arrowheadSoft); }
+      .text-dark { fill: #0f172a; font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .text-muted { fill: #334155; font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; }
+      .title { font-size: 34px; font-weight: 700; }
+      .box-title { font-size: 23px; font-weight: 700; }
+      .body { font-size: 18px; }
+      .small { font-size: 16px; }
+    </style>
+    <marker id="arrowhead" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#64748b"/>
+    </marker>
+    <marker id="arrowheadSoft" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1280" height="860"/>
+  <text class="text-dark title" x="640" y="56" text-anchor="middle">Ceph 不是一个接口，而是一套分层体系</text>
+
+  <rect class="top" x="320" y="90" rx="20" ry="20" width="640" height="86"/>
+  <text class="text-dark box-title" x="640" y="128" text-anchor="middle">应用 / 平台 / 业务系统</text>
+  <text class="text-muted body" x="640" y="158" text-anchor="middle">云平台、虚拟化、容器平台、S3 应用、直接接入的客户端</text>
+
+  <rect class="iface rgw" x="80" y="240" rx="18" ry="18" width="250" height="110"/>
+  <text class="text-dark box-title" x="205" y="283" text-anchor="middle">RGW</text>
+  <text class="text-muted body" x="205" y="314" text-anchor="middle">S3 / Swift API</text>
+  <text class="text-muted small" x="205" y="338" text-anchor="middle">对外的对象网关</text>
+
+  <rect class="iface cephfs" x="380" y="240" rx="18" ry="18" width="250" height="110"/>
+  <text class="text-dark box-title" x="505" y="283" text-anchor="middle">CephFS</text>
+  <text class="text-muted body" x="505" y="314" text-anchor="middle">POSIX 文件语义</text>
+  <text class="text-muted small" x="505" y="338" text-anchor="middle">目录树、inode、共享挂载</text>
+
+  <rect class="iface rbd" x="680" y="240" rx="18" ry="18" width="250" height="110"/>
+  <text class="text-dark box-title" x="805" y="283" text-anchor="middle">RBD</text>
+  <text class="text-muted body" x="805" y="314" text-anchor="middle">块设备 / 云盘</text>
+  <text class="text-muted small" x="805" y="338" text-anchor="middle">把对象封装成虚拟磁盘</text>
+
+  <rect class="iface librados" x="980" y="240" rx="18" ry="18" width="220" height="110"/>
+  <text class="text-dark box-title" x="1090" y="283" text-anchor="middle">librados</text>
+  <text class="text-muted body" x="1090" y="314" text-anchor="middle">原生对象访问</text>
+  <text class="text-muted small" x="1090" y="338" text-anchor="middle">最贴近底座的客户端库</text>
+
+  <path class="solid" d="M205 350 L205 430 L640 430"/>
+  <path class="solid" d="M505 350 L505 430"/>
+  <path class="solid" d="M805 350 L805 430"/>
+  <path class="solid" d="M1090 350 L1090 430 L640 430"/>
+
+  <rect class="rados" x="360" y="430" rx="24" ry="24" width="560" height="120"/>
+  <text class="text-dark box-title" x="640" y="478" text-anchor="middle">RADOS</text>
+  <text class="text-muted body" x="640" y="512" text-anchor="middle">统一的分布式对象存储底座</text>
+  <text class="text-muted small" x="640" y="540" text-anchor="middle">负责对象存储、复制或纠删码、故障恢复、数据分布与一致性维持</text>
+
+  <path class="solid" d="M640 176 L640 220"/>
+  <path class="solid" d="M640 550 L640 620"/>
+
+  <rect class="bottom mon" x="110" y="620" rx="18" ry="18" width="290" height="140"/>
+  <text class="text-dark box-title" x="255" y="668" text-anchor="middle">MON</text>
+  <text class="text-muted body" x="255" y="701" text-anchor="middle">维护集群地图</text>
+  <text class="text-muted small" x="255" y="728" text-anchor="middle">控制面的大脑之一，形成一致视图</text>
+
+  <rect class="bottom osd" x="495" y="620" rx="18" ry="18" width="290" height="140"/>
+  <text class="text-dark box-title" x="640" y="668" text-anchor="middle">OSD 集群</text>
+  <text class="text-muted body" x="640" y="701" text-anchor="middle">真正存数据并执行 IO</text>
+  <text class="text-muted small" x="640" y="728" text-anchor="middle">复制、恢复、回填等动作主要发生在这里</text>
+
+  <rect class="bottom crush" x="880" y="620" rx="18" ry="18" width="290" height="140"/>
+  <text class="text-dark box-title" x="1025" y="668" text-anchor="middle">CRUSH</text>
+  <text class="text-muted body" x="1025" y="701" text-anchor="middle">负责数据定位</text>
+  <text class="text-muted small" x="1025" y="728" text-anchor="middle">按规则计算对象应该落到哪些 OSD</text>
+
+  <rect class="mgr" x="1020" y="92" rx="16" ry="16" width="180" height="88"/>
+  <text class="text-dark box-title" x="1110" y="126" text-anchor="middle">MGR</text>
+  <text class="text-muted small" x="1110" y="150" text-anchor="middle">管理平面 / 监控 / 插件</text>
+  <text class="text-muted small" x="1110" y="170" text-anchor="middle">本文先点到为止</text>
+  <path class="dashed" d="M1020 136 L960 136"/>
+
+  <rect class="takeaway" x="210" y="784" rx="18" ry="18" width="860" height="52"/>
+  <text class="text-dark body" x="640" y="817" text-anchor="middle">关键直觉：Ceph 的核心是 RADOS；RGW、CephFS、RBD、librados 只是把同一个底座以不同语义暴露出来</text>
+</svg>

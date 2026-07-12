@@ -1,4 +1,4 @@
 void main() {
-  var _ = 1;
-  String _ = 'hello';
+  var _num = 1;
+  String _str = 'hello';
 }

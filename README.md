@@ -10,7 +10,7 @@
 | --- | --- | --- |
 | 算法与数据结构 | 线性表、树、图、字符串、散列表，以及查找和排序算法 | [算法笔记](algorithms/算法.md) |
 | 分布式算法 | 分布式一致性、Paxos、Raft、Chubby 及相关论文资料 | [分布式一致性与共识算法](distributed-systems/分布式一致性和共识算法.md) |
-| 编程语言 | C、C++、Dart、Rust 的系统学习路线，以及少量 Python 示例 | [编程语言目录](languages/) |
+| 编程语言 | C、C++、Dart、Go、Rust 的系统学习路线，以及少量 Python 示例 | [编程语言目录](languages/) |
 | 开源项目 | Flutter、Ceph、DAOS、RocksDB、SGLang、vLLM 的原理与源码分析 | [开源项目目录](open-source/) |
 
 ## 专题系列
@@ -27,6 +27,7 @@
 - [C 语言](languages/c/0.目录.md)：从开发环境、语法和指针，到内存、编译链接、测试与工程实践。
 - [C++](languages/cpp/C++学习列表.md)：覆盖现代 C++ 基础、STL、模板、并发、协程及 C++20/23/26 特性。
 - [Dart](<languages/dart/1.1 简介.md>)：覆盖类型系统、模式匹配、面向对象、异步编程、包管理、空安全与 FFI。
+- [Go](languages/go/README.md)：基于 golang/go 源码，按章节解析编译器、链接器、调度器、内存分配、GC、channel、map 等实现。
 - [Rust](languages/rust/Rust由浅入深学习路线.md)：从所有权和类型系统逐步深入异步、宏、Unsafe、FFI 与性能优化。
 
 ### 开源项目与源码阅读

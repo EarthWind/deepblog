@@ -3,7 +3,7 @@
 ![C++ 协程帧、暂停点与事件循环概念图](./images/coroutine/cpp-coroutine-hero.png)
 
 > 本文面向已经掌握 RAII、移动语义、模板和基础并发的 C++ 开发者。示例使用 C++20，只依赖标准库。我们会从编译器协议出发，实现一个惰性 `Generator<T>`，再实现一个可以嵌套 `co_await` 的 `Task<T>`、定时 awaiter 和单线程事件循环。  
-> 完整可运行代码：[source/coroutine/mini_coroutine.cpp](./source/coroutine/mini_coroutine.cpp)；构建说明：[source/coroutine/README.md](./source/coroutine/README.md)。  
+> 完整可运行代码：[src/coroutine/mini_coroutine.cpp](./src/coroutine/mini_coroutine.cpp)；构建说明：[src/coroutine/README.md](./src/coroutine/README.md)。  
 > 资料核对日期：2026-07-21。
 
 ---
@@ -672,7 +672,7 @@ std::cout << independent.result() << '\n';
 进入源码目录：
 
 ```bash
-cd Planguage/C++/source/coroutine
+cd languages/cpp/src/coroutine
 g++ -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow \
   mini_coroutine.cpp -o mini_coroutine
 ./mini_coroutine

@@ -8,44 +8,44 @@
 
 | 主题 | 主要内容 | 阅读入口 |
 | --- | --- | --- |
-| 算法与数据结构 | 线性表、树、图、字符串、散列表，以及查找和排序算法 | [算法笔记](Algorithm/算法.md) |
-| 分布式算法 | 分布式一致性、Paxos、Raft、Chubby 及相关论文资料 | [分布式一致性与共识算法](DistributedAlgorithm/分布式一致性和共识算法.md) |
-| 编程语言 | C、C++、Dart、Rust 的系统学习路线，以及少量 Python 示例 | [编程语言目录](Planguage/) |
-| 开源项目 | Flutter、Ceph、DAOS、RocksDB、SGLang、vLLM 的原理与源码分析 | [开源项目目录](OpenSource/) |
+| 算法与数据结构 | 线性表、树、图、字符串、散列表，以及查找和排序算法 | [算法笔记](algorithms/算法.md) |
+| 分布式算法 | 分布式一致性、Paxos、Raft、Chubby 及相关论文资料 | [分布式一致性与共识算法](distributed-systems/分布式一致性和共识算法.md) |
+| 编程语言 | C、C++、Dart、Rust 的系统学习路线，以及少量 Python 示例 | [编程语言目录](languages/) |
+| 开源项目 | Flutter、Ceph、DAOS、RocksDB、SGLang、vLLM 的原理与源码分析 | [开源项目目录](open-source/) |
 
 ## 专题系列
 
 ### 算法与分布式系统
 
-- [数据结构与算法](Algorithm/)：涵盖基础数据结构、常见查找算法和排序算法。
-- [Paxos](DistributedAlgorithm/Paxos/)：包含 Multi-Paxos 笔记、经典论文和流程图。
-- [Raft](DistributedAlgorithm/Raft/)：包含算法流程、论文译文及原始论文。
-- [Chubby](DistributedAlgorithm/chubby/)：收录 Chubby 相关论文资料。
+- [数据结构与算法](algorithms/)：涵盖基础数据结构、常见查找算法和排序算法。
+- [Paxos](distributed-systems/paxos/)：包含 Multi-Paxos 笔记、经典论文和流程图。
+- [Raft](distributed-systems/raft/)：包含算法流程、论文译文及原始论文。
+- [Chubby](distributed-systems/chubby/)：收录 Chubby 相关论文资料。
 
 ### 编程语言
 
-- [C 语言](Planguage/C/0.目录.md)：从开发环境、语法和指针，到内存、编译链接、测试与工程实践。
-- [C++](Planguage/C++/C++学习列表.md)：覆盖现代 C++ 基础、STL、模板、并发、协程及 C++20/23/26 特性。
-- [Dart](<Planguage/Dart/1.1 简介.md>)：覆盖类型系统、模式匹配、面向对象、异步编程、包管理、空安全与 FFI。
-- [Rust](Planguage/Rust/Rust由浅入深学习路线.md)：从所有权和类型系统逐步深入异步、宏、Unsafe、FFI 与性能优化。
+- [C 语言](languages/c/0.目录.md)：从开发环境、语法和指针，到内存、编译链接、测试与工程实践。
+- [C++](languages/cpp/C++学习列表.md)：覆盖现代 C++ 基础、STL、模板、并发、协程及 C++20/23/26 特性。
+- [Dart](<languages/dart/1.1 简介.md>)：覆盖类型系统、模式匹配、面向对象、异步编程、包管理、空安全与 FFI。
+- [Rust](languages/rust/Rust由浅入深学习路线.md)：从所有权和类型系统逐步深入异步、宏、Unsafe、FFI 与性能优化。
 
 ### 开源项目与源码阅读
 
-- [Flutter](<OpenSource/Flutter/1.0 Flutter概览.md>)：框架架构、Dart 入门、Widget、布局、状态管理、网络与本地数据。
-- [Ceph](OpenSource/ceph/ceph-architecture-blog-series.md)：从整体架构深入 MON、MGR、OSD、BlueStore、RBD、CephFS 和 RGW。
-- [DAOS](OpenSource/daos/README.md)：围绕控制面、数据面、核心服务和底层存储实现展开源码阅读。
-- [RocksDB](OpenSource/rocksdb/blogs.md)：覆盖核心 API、LSM Tree、读写路径、WAL、SST、Compaction 和事务。
-- [SGLang](OpenSource/sglang/)：梳理服务入口、运行时、调度、缓存、并行和高级推理能力。
-- [vLLM](OpenSource/vllm/vllm_blog_series_roadmap.md)：从 V1 架构和请求链路深入调度、KV Cache、Worker 与扩展机制。
+- [Flutter](<open-source/flutter/1.0 Flutter概览.md>)：框架架构、Dart 入门、Widget、布局、状态管理、网络与本地数据。
+- [Ceph](open-source/ceph/ceph-architecture-blog-series.md)：从整体架构深入 MON、MGR、OSD、BlueStore、RBD、CephFS 和 RGW。
+- [DAOS](open-source/daos/README.md)：围绕控制面、数据面、核心服务和底层存储实现展开源码阅读。
+- [RocksDB](open-source/rocksdb/blogs.md)：覆盖核心 API、LSM Tree、读写路径、WAL、SST、Compaction 和事务。
+- [SGLang](open-source/sglang/)：梳理服务入口、运行时、调度、缓存、并行和高级推理能力。
+- [vLLM](open-source/vllm/vllm_blog_series_roadmap.md)：从 V1 架构和请求链路深入调度、KV Cache、Worker 与扩展机制。
 
 ## 目录结构
 
 ```text
 deepblog/
-├── Algorithm/             # 算法与数据结构
-├── DistributedAlgorithm/  # 分布式一致性与共识算法
-├── OpenSource/            # 开源项目原理与源码分析
-├── Planguage/             # 编程语言学习笔记
+├── algorithms/           # 算法与数据结构
+├── distributed-systems/  # 分布式一致性与共识算法
+├── open-source/          # 开源项目原理与源码分析
+├── languages/            # 编程语言学习笔记
 └── README.md
 ```
 

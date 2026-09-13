@@ -690,6 +690,11 @@ generator 通常惰性地产生值。C++23 提供 `std::generator`，但标准�
 
 C++26 execution control library 提供 sender/receiver 等组合模型，后续专题阶段学习。
 
+专题延伸：
+
+- [C++20 协程原理：从编译器变换到 Task 与事件循环](./coroutine/C++20协程原理：从编译器变换到Task与事件循环.md)
+- [GCC 16 如何实现 C++20 协程：从语义分析到状态机 Lowering](./coroutine/GCC如何实现C++20协程：从语义分析到状态机Lowering.md)
+
 ### 本节练习
 
 1. 实现只支持整数的教学 generator。

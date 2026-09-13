@@ -1,5 +1,10 @@
 # C++20 协程教学实现
 
+本目录包含两组可独立运行的示例：
+
+- `mini_coroutine.cpp`：完整教学实现；
+- `gcc_coroutine_probe.cpp`：用于观察 GCC 生成的 frame、ramp、actor 和 destroyer 的最小探针。
+
 `mini_coroutine.cpp` 包含三个刻意保持最小的组件：
 
 - 惰性、同步、单遍历的 `Generator<T>`；
@@ -15,6 +20,18 @@ g++ -std=c++20 -Wall -Wextra -Wpedantic -Wconversion -Wshadow \
   mini_coroutine.cpp -o mini_coroutine
 ./mini_coroutine
 ```
+
+观察 GCC 的协程前端变换：
+
+```bash
+g++ -std=c++20 -O0 -g -fno-inline -fdump-lang-coro \
+  -fdump-tree-coro-lower-builtins \
+  -fdump-tree-coro-early-expand-ifns \
+  gcc_coroutine_probe.cpp -o gcc_coroutine_probe
+./gcc_coroutine_probe
+```
+
+输出文件名包含 GCC 分配的 pass 编号，并可能带可执行文件名前缀，可用 `ls *gcc_coroutine_probe.cpp.*` 查看。
 
 使用 CMake：
 
